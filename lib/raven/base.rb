@@ -29,6 +29,9 @@ module Raven
     # values for all Raven configuration options. See Raven::Configuration.
     attr_writer :configuration
 
+    # Stores the last captured Event ID
+    attr_reader :last_event_id
+
     def context
       Context.current
     end
@@ -114,7 +117,7 @@ module Raven
         else
           send_event(evt)
         end
-
+        @last_event_id = evt.id
         evt
       end
     end
