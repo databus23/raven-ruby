@@ -30,6 +30,10 @@ module Raven
     # values for all Raven configuration options. See Raven::Configuration.
     attr_writer :configuration
 
+    def breadcrumbs
+      BreadcrumbBuffer.current
+    end
+
     def context
       Context.current
     end
